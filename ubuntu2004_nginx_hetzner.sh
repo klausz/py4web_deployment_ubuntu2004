@@ -1,14 +1,30 @@
-sudo useradd klaus
+
+#https://community.hetzner.com/tutorials/how-to-install-nginx-on-ubuntu-20-04
+#wg Browser, ich brauche IPv4
+adduser klaus
 adduser klaus sudo
 
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt install nginx
 # setup firewall maybe
+sudo ufw app list
+sudo ufw allow 'Nginx HTTP' #https geht auch, später
+sudo ufw status #inaktiv, müsste aber aktiv sein
+systemctl status nginx
+http://65.109.168.3 #auf firefox gut, nicht auf Safari 
+# eine Webseite hab eihc jetzt nicht erstellt, anleitung vorhanden
 
-
-
-
-
+# https://community.hetzner.com/tutorials/add-ssl-certificate-with-lets-encrypt-to-nginx-on-ubuntu-20-04
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt install certbot python3-certbot-nginx
+sudo ufw status #geht immer noch nicht
+sudo ufw allow 'Nginx Full'
+sudo ufw delete allow 'Nginx HTTP'
+sudo ufw status #geht immer noch nicht
+sudo certbot --nginx -d example.com #evtl muss ich da eine eigene Domain nehmen
+sudo certbot --nginx -d example.com -d www.example.com
+# Your new Nginx config should look as follows: (muss ich wohl selbst einbauen)
+#dann müsste es- wenn ich webseite habe, gehen 
 
 
 
