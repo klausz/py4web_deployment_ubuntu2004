@@ -1,3 +1,19 @@
+sudo useradd klaus
+adduser klaus sudo
+
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt install nginx
+# setup firewall maybe
+
+
+
+
+
+
+
+
+
+========
 
 #cloud-config
 
